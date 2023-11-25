@@ -39,13 +39,15 @@ android {
 
 dependencies {
     val retrofitVersion = "2.9.0"
-    val hiltVersion = "2.44"
+    val hiltVersion = "2.48.1"
     val coroutinesVersion = "1.6.4"
     val glideVersion = "4.16.0"
+    val loggingInterceptorVersion = "4.11.0"
+    val navVersion = "2.7.5"
 
-    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
+    implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -56,15 +58,22 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     //Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
-    implementation ("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    kapt ("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0")
 
     //Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
     //Glide
-    implementation ("com.github.bumptech.glide:glide:$glideVersion")
+    implementation("com.github.bumptech.glide:glide:$glideVersion")
+
+    //Interceptor
+    implementation("com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion")
+
+    //Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 }
 
 // Allow references to generated code

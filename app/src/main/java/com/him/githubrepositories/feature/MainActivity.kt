@@ -1,7 +1,8 @@
-package com.him.githubrepositories
+package com.him.githubrepositories.feature
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.him.githubrepositories.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
