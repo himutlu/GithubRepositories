@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/repositoryListFragment">
+    <fragment
+        android:id="@+id/repositoryListFragment"
+        android:name="com.him.githubrepositories.feature.presentation.repositoryList.RepositoryListFragment"
+        android:label="fragment_repository_list"
+        tools:layout="@layout/fragment_repository_list">
+        <action
+            android:id="@+id/action_repositoryListFragment_to_repositoryDetailFragment"
+            app:destination="@id/repositoryDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/repositoryDetailFragment"
+        android:name="com.him.githubrepositories.feature.presentation.repositoryDetail.RepositoryDetailFragment"
+        android:label="fragment_repository_detail"
+        tools:layout="@layout/fragment_repository_detail">
+        <action
+            android:id="@+id/action_repositoryDetailFragment_to_userDetailFragment"
+            app:destination="@id/userDetailFragment" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <argument
+            android:name="repositoryName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/userDetailFragment"
+        android:name="com.him.githubrepositories.feature.presentation.userDetail.UserDetailFragment"
+        android:label="fragment_user_detail"
+        tools:layout="@layout/fragment_user_detail">
+        <argument
+            android:name="userName"
+            app:argType="string" />
+    </fragment>
+</navigation>
