@@ -31,3 +31,7 @@ private fun createPlaceHolder(context: Context): CircularProgressDrawable {
 fun View.hide() {
     this.visibility = View.GONE
 }
+
+fun View.show() {
+    this.visibility = View.VISIBLE
+}

@@ -13,4 +13,5 @@
     <string name="repository_list">Repository List</string>
     <string name="repository_detail">Repository Detail</string>
     <string name="user_detail">User Detail</string>
+    <string name="error">Error</string>
 </resources>

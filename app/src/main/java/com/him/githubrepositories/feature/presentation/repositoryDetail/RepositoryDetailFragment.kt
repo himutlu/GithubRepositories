@@ -12,6 +12,7 @@ import com.him.githubrepositories.R
 import com.him.githubrepositories.core.util.hide
 import com.him.githubrepositories.core.util.loadImage
 import com.him.githubrepositories.databinding.FragmentRepositoryDetailBinding
+import com.him.githubrepositories.feature.MainActivity
 import com.him.githubrepositories.feature.domain.util.Constants.HYPHEN
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,7 +36,7 @@ class RepositoryDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
         initViews()
-        if(!viewModel.repositoryDetailLiveData.isInitialized)
+        if (!viewModel.repositoryDetailLiveData.isInitialized)
             viewModel.getRepositoryDetail(safeArgs.username, safeArgs.repositoryName)
     }
 
@@ -51,6 +52,7 @@ class RepositoryDetailFragment : Fragment() {
 
     private fun initObservers() {
         viewModel.repositoryDetailLiveData.observe(viewLifecycleOwner) {
+            (activity as MainActivity).showFragmentContainer()
             it?.let { detail ->
                 detail.owner?.avatarUrl?.let { url ->
                     binding.ivDetailAvatar.loadImage(
@@ -58,11 +60,28 @@ class RepositoryDetailFragment : Fragment() {
                         requireContext()
                     )
                 } ?: kotlin.run { binding.ivDetailAvatar.hide() }
-                binding.tvRepositoryName.text = detail.repositoryName?: HYPHEN
-                binding.tvUsername.text = detail.owner?.username?: HYPHEN
-                binding.tvForkCount.text = detail.forkCount?: HYPHEN
-                binding.tvLanguage.text = detail.language?: HYPHEN
-                binding.tvDefaultBranchName.text = detail.defaultBranchName?: HYPHEN
+                binding.tvRepositoryName.text = detail.repositoryName ?: HYPHEN
+                binding.tvUsername.text = detail.owner?.username ?: HYPHEN
+                binding.tvForkCount.text = detail.forkCount ?: HYPHEN
+                binding.tvLanguage.text = detail.language ?: HYPHEN
+                binding.tvDefaultBranchName.text = detail.defaultBranchName ?: HYPHEN
+            }
+        }
+
+        viewModel.dataLoading.observe(viewLifecycleOwner) {
+            if (it)
+                (activity as MainActivity).showProgressbarAndHideContainer()
+            else
+                (activity as MainActivity).hideProgressbar()
+        }
+
+        viewModel.error.observe(viewLifecycleOwner) {
+            if (!it.isNullOrEmpty()) {
+                (activity as MainActivity).showFetchingErrorPopup(it, {
+                    viewModel.getRepositoryDetail(safeArgs.username, safeArgs.repositoryName)
+                }, {
+                    findNavController().navigateUp()
+                })
             }
         }
     }

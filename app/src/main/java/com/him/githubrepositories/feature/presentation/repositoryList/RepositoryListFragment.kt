@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.him.githubrepositories.R
 import com.him.githubrepositories.databinding.FragmentRepositoryListBinding
+import com.him.githubrepositories.feature.MainActivity
 import com.him.githubrepositories.feature.data.datasource.RepositoriesResponse
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,7 +34,7 @@ class RepositoryListFragment : Fragment(), RepositoryListAdapter.OnClickListener
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initObservers()
-        if(!viewModel.repositoriesLiveData.isInitialized)
+        if (!viewModel.repositoriesLiveData.isInitialized)
             viewModel.getRepositories()
     }
 
@@ -45,7 +46,25 @@ class RepositoryListFragment : Fragment(), RepositoryListAdapter.OnClickListener
     private fun initObservers() {
         viewModel.repositoriesLiveData.observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
+                (activity as MainActivity).showFragmentContainer()
                 adapter.addRepositoryList(it as ArrayList<RepositoriesResponse>)
+            }
+        }
+
+        viewModel.dataLoading.observe(viewLifecycleOwner) {
+            if (it)
+                (activity as MainActivity).showProgressbarAndHideContainer()
+            else
+                (activity as MainActivity).hideProgressbar()
+        }
+
+        viewModel.error.observe(viewLifecycleOwner) {
+            if (!it.isNullOrEmpty()) {
+                (activity as MainActivity).showFetchingErrorPopup(it, {
+                    viewModel.getRepositories()
+                }, {
+                    findNavController().navigateUp()
+                })
             }
         }
     }

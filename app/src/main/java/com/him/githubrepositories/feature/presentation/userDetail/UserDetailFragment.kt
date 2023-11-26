@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.him.githubrepositories.R
 import com.him.githubrepositories.core.util.hide
 import com.him.githubrepositories.core.util.loadImage
 import com.him.githubrepositories.databinding.FragmentUserDetailBinding
+import com.him.githubrepositories.feature.MainActivity
 import com.him.githubrepositories.feature.data.datasource.RepositoriesResponse
 import com.him.githubrepositories.feature.domain.util.Constants.HYPHEN
 import com.him.githubrepositories.feature.presentation.repositoryList.RepositoryListAdapter
@@ -38,7 +40,7 @@ class UserDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initObservers()
-        if(!viewModel.userDetailLiveData.isInitialized)
+        if (!viewModel.userDetailLiveData.isInitialized)
             viewModel.getUserDetail(safeArgs.username)
     }
 
@@ -55,15 +57,37 @@ class UserDetailFragment : Fragment() {
                         url,
                         requireContext()
                     )
-                } ?: kotlin.run { binding.ivUserAvatar.hide() }
+                } ?: kotlin.run {
+                    binding.ivUserAvatar.hide()
+                }
                 binding.tvOwnerUsername.text = user.username ?: HYPHEN
                 binding.tvEmail.text = user.username ?: HYPHEN
             }
+
+            viewModel.getUserRepositories(safeArgs.username)
         }
 
         viewModel.userRepositoriesLiveData.observe(viewLifecycleOwner) {
+            (activity as MainActivity).showFragmentContainer()
             if (it.isNotEmpty()) {
                 adapter.addRepositoryList(it as ArrayList<RepositoriesResponse>)
+            }
+        }
+
+        viewModel.dataLoading.observe(viewLifecycleOwner) {
+            if (it)
+                (activity as MainActivity).showProgressbarAndHideContainer()
+            else
+                (activity as MainActivity).hideProgressbar()
+        }
+
+        viewModel.error.observe(viewLifecycleOwner) {
+            if (!it.isNullOrEmpty()) {
+                (activity as MainActivity).showFetchingErrorPopup(it, {
+                    viewModel.getUserDetail(safeArgs.username)
+                }, {
+                    findNavController().navigateUp()
+                })
             }
         }
     }

@@ -24,22 +24,46 @@ class UserDetailViewModel @Inject constructor(
     val userRepositoriesLiveData: LiveData<List<RepositoriesResponse>>
         get() = _userRepositoriesLiveData
 
+    private val _dataLoading = MutableLiveData(false)
+    val dataLoading: LiveData<Boolean>
+        get() = _dataLoading
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String>
+        get() = _error
+
     fun getUserDetail(username: String) {
         viewModelScope.launch {
             repositoryUseCases.getUserDetailUseCases(username).collect { response ->
-                if (response.status == Status.SUCCESS) {
-                    getUserRepositories(username)
-                    _userDetailLiveData.value = response.data!!
+                when (response.status) {
+                    Status.SUCCESS -> {
+                        _userDetailLiveData.value = response.data!!
+                        _dataLoading.value = false
+                    }
+                    Status.ERROR -> {
+                        _error.value = response.message
+                    }
+                    Status.LOADING -> {
+                        _dataLoading.value = true
+                    }
                 }
             }
         }
     }
 
-    private fun getUserRepositories(username: String) {
+    fun getUserRepositories(username: String) {
         viewModelScope.launch {
             repositoryUseCases.getUserRepositoriesUseCases(username).collect { response ->
-                if (response.status == Status.SUCCESS) {
-                    _userRepositoriesLiveData.value = response.data!!
+                when (response.status) {
+                    Status.SUCCESS -> {
+                        _userRepositoriesLiveData.value = response.data!!
+                        _dataLoading.value = false
+                    }
+                    Status.ERROR -> {
+                        _error.value = response.message
+                    }
+                    Status.LOADING -> {
+                        _dataLoading.value = true
+                    }
                 }
             }
         }
