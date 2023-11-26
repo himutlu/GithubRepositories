@@ -20,16 +20,12 @@ class RepositoryListFragment : Fragment(), RepositoryListAdapter.OnClickListener
     private val binding get() = _binding!!
     private var adapter = RepositoryListAdapter(arrayListOf(), this)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activity?.setTitle(R.string.repository_list)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRepositoryListBinding.inflate(layoutInflater)
+        activity?.setTitle(R.string.repository_list)
         return binding.root
     }
 
@@ -37,7 +33,8 @@ class RepositoryListFragment : Fragment(), RepositoryListAdapter.OnClickListener
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initObservers()
-        viewModel.getRepositories()
+        if(!viewModel.repositoriesLiveData.isInitialized)
+            viewModel.getRepositories()
     }
 
     private fun initRecyclerView() {

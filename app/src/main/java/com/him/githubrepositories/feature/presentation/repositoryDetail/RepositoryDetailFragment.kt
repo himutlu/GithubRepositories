@@ -35,7 +35,8 @@ class RepositoryDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
         initViews()
-        viewModel.getRepositoryDetail(safeArgs.username, safeArgs.repositoryName)
+        if(!viewModel.repositoryDetailLiveData.isInitialized)
+            viewModel.getRepositoryDetail(safeArgs.username, safeArgs.repositoryName)
     }
 
     private fun initViews() {

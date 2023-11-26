@@ -38,7 +38,8 @@ class UserDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initObservers()
-        viewModel.getUserDetail(safeArgs.username)
+        if(!viewModel.userDetailLiveData.isInitialized)
+            viewModel.getUserDetail(safeArgs.username)
     }
 
     private fun initRecyclerView() {
