@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.him.githubrepositories.R
 import com.him.githubrepositories.databinding.FragmentRepositoryListBinding
 import com.him.githubrepositories.feature.data.datasource.RepositoriesResponse
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,6 +19,11 @@ class RepositoryListFragment : Fragment(), RepositoryListAdapter.OnClickListener
     private var _binding: FragmentRepositoryListBinding? = null
     private val binding get() = _binding!!
     private var adapter = RepositoryListAdapter(arrayListOf(), this)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.setTitle(R.string.repository_list)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

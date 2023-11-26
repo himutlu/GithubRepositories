@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.him.githubrepositories.R
 import com.him.githubrepositories.core.util.hide
 import com.him.githubrepositories.core.util.loadImage
 import com.him.githubrepositories.databinding.FragmentRepositoryDetailBinding
@@ -26,6 +27,7 @@ class RepositoryDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRepositoryDetailBinding.inflate(layoutInflater)
+        activity?.setTitle(R.string.repository_detail)
         return binding.root
     }
 
