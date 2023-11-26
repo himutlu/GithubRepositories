@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class UserDetailResponse(
     val email: String?,
     @SerializedName("login")
-    val userName: String?,
+    val username: String?,
     @SerializedName("avatar_url")
     val avatarLink: String?
 )

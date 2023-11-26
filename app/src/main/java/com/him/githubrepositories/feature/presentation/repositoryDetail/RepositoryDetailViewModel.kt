@@ -19,9 +19,9 @@ class RepositoryDetailViewModel @Inject constructor(
     val repositoryDetailLiveData: LiveData<RepositoryDetailResponse>
         get() = _repositoryDetailLiveData
 
-    fun getRepositoryDetail(userName: String, repositoryName: String) {
+    fun getRepositoryDetail(username: String, repositoryName: String) {
         viewModelScope.launch {
-            repositoryUseCases.getRepositoryDetailUseCases(userName, repositoryName)
+            repositoryUseCases.getRepositoryDetailUseCases(username, repositoryName)
                 .collect { response ->
                     if (response.status == Status.SUCCESS) {
                         _repositoryDetailLiveData.value = response.data!!

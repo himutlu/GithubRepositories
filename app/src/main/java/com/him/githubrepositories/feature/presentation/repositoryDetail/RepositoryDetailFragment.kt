@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.him.githubrepositories.core.util.hide
 import com.him.githubrepositories.core.util.loadImage
 import com.him.githubrepositories.databinding.FragmentRepositoryDetailBinding
+import com.him.githubrepositories.feature.domain.util.Constants.HYPHEN
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,14 +33,14 @@ class RepositoryDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
         initViews()
-        viewModel.getRepositoryDetail(safeArgs.userName, safeArgs.repositoryName)
+        viewModel.getRepositoryDetail(safeArgs.username, safeArgs.repositoryName)
     }
 
     private fun initViews() {
         binding.ivDetailAvatar.setOnClickListener {
             val action =
                 RepositoryDetailFragmentDirections.actionRepositoryDetailFragmentToUserDetailFragment(
-                    safeArgs.userName
+                    safeArgs.username
                 )
             findNavController().navigate(action)
         }
@@ -54,18 +55,11 @@ class RepositoryDetailFragment : Fragment() {
                         requireContext()
                     )
                 } ?: kotlin.run { binding.ivDetailAvatar.hide() }
-                detail.repositoryName?.let { name -> binding.tvRepositoryName.text = name }
-                    ?: kotlin.run { binding.llRepositoryName.hide() }
-                detail.owner?.userName?.let { userName -> binding.tvUserName.text = userName }
-                    ?: kotlin.run { binding.llUserName.hide() }
-                detail.forkCount?.let { count -> binding.tvForkCount.text = count }
-                    ?: kotlin.run { binding.llForkCount.hide() }
-                detail.language?.let { lang -> binding.tvLanguage.text = lang }
-                    ?: kotlin.run { binding.llLanguage.hide() }
-                detail.defaultBranchName?.let { branchName ->
-                    binding.tvDefaultBranchName.text =
-                        branchName
-                } ?: kotlin.run { binding.llDefaultBranchName.hide() }
+                binding.tvRepositoryName.text = detail.repositoryName?: HYPHEN
+                binding.tvUsername.text = detail.owner?.username?: HYPHEN
+                binding.tvForkCount.text = detail.forkCount?: HYPHEN
+                binding.tvLanguage.text = detail.language?: HYPHEN
+                binding.tvDefaultBranchName.text = detail.defaultBranchName?: HYPHEN
             }
         }
     }

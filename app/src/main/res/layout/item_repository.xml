@@ -35,18 +35,16 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_repo_name_label"
+                    style="@style/StaticTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/repository_name" />
 
                 <TextView
                     android:id="@+id/tv_repo_name"
+                    style="@style/DynamicTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
                     tools:text="Test Repository" />
 
             </LinearLayout>
@@ -58,18 +56,16 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_owner_name_label"
+                    style="@style/StaticTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/owner_name" />
 
                 <TextView
                     android:id="@+id/tv_owner_name"
+                    style="@style/DynamicTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
                     tools:text="Test Owner" />
 
             </LinearLayout>

@@ -6,7 +6,8 @@
     <string name="default_branch_name">Default Branch Name:</string>
     <string name="language">Language:</string>
     <string name="fork_count">Fork Count:</string>
-    <string name="user_name">Username:</string>
+    <string name="username">Username:</string>
     <string name="email">Email:</string>
     <string name="hyphen">-</string>
+    <string name="repositories">Repositories:</string>
 </resources>

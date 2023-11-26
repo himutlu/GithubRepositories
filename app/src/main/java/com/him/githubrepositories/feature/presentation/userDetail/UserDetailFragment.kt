@@ -36,7 +36,7 @@ class UserDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initObservers()
-        viewModel.getUserDetail(safeArgs.userName)
+        viewModel.getUserDetail(safeArgs.username)
     }
 
     private fun initRecyclerView() {
@@ -53,8 +53,8 @@ class UserDetailFragment : Fragment() {
                         requireContext()
                     )
                 } ?: kotlin.run { binding.ivUserAvatar.hide() }
-                binding.tvOwnerUserName.text = user.userName ?: HYPHEN
-                binding.tvEmail.text = user.userName ?: HYPHEN
+                binding.tvOwnerUsername.text = user.username ?: HYPHEN
+                binding.tvEmail.text = user.username ?: HYPHEN
             }
         }
 

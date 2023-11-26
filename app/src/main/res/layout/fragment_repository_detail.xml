@@ -30,40 +30,38 @@
             android:orientation="horizontal">
 
             <TextView
+                style="@style/StaticTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/repository_name" />
 
             <TextView
                 android:id="@+id/tv_repository_name"
+                style="@style/DynamicTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:ellipsize="end"
-                android:maxLines="1"
                 tools:text="Test Repository Name" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_user_name"
+            android:id="@+id/ll_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
+                style="@style/StaticTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/user_name" />
+                android:text="@string/username" />
 
             <TextView
-                android:id="@+id/tv_user_name"
+                android:id="@+id/tv_username"
+                style="@style/DynamicTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                tools:text="Test User Name" />
+                tools:text="Test Username" />
 
         </LinearLayout>
 
@@ -74,17 +72,16 @@
             android:orientation="horizontal">
 
             <TextView
+                style="@style/StaticTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/fork_count" />
 
             <TextView
                 android:id="@+id/tv_fork_count"
+                style="@style/DynamicTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:ellipsize="end"
-                android:maxLines="1"
                 tools:text="216" />
 
         </LinearLayout>
@@ -96,17 +93,16 @@
             android:orientation="horizontal">
 
             <TextView
+                style="@style/StaticTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/language" />
 
             <TextView
                 android:id="@+id/tv_language"
+                style="@style/DynamicTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:ellipsize="end"
-                android:maxLines="1"
                 tools:text="C++" />
 
         </LinearLayout>
@@ -118,17 +114,16 @@
             android:orientation="horizontal">
 
             <TextView
+                style="@style/StaticTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/default_branch_name" />
 
             <TextView
                 android:id="@+id/tv_default_branch_name"
+                style="@style/DynamicTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:ellipsize="end"
-                android:maxLines="1"
                 tools:text="Test Branch Name" />
 
         </LinearLayout>

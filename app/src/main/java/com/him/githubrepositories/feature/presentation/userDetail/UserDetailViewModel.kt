@@ -24,20 +24,20 @@ class UserDetailViewModel @Inject constructor(
     val userRepositoriesLiveData: LiveData<List<RepositoriesResponse>>
         get() = _userRepositoriesLiveData
 
-    fun getUserDetail(userName: String) {
+    fun getUserDetail(username: String) {
         viewModelScope.launch {
-            repositoryUseCases.getUserDetailUseCases(userName).collect { response ->
+            repositoryUseCases.getUserDetailUseCases(username).collect { response ->
                 if (response.status == Status.SUCCESS) {
-                    getUserRepositories(userName)
+                    getUserRepositories(username)
                     _userDetailLiveData.value = response.data!!
                 }
             }
         }
     }
 
-    private fun getUserRepositories(userName: String) {
+    private fun getUserRepositories(username: String) {
         viewModelScope.launch {
-            repositoryUseCases.getUserRepositoriesUseCases(userName).collect { response ->
+            repositoryUseCases.getUserRepositoriesUseCases(username).collect { response ->
                 if (response.status == Status.SUCCESS) {
                     _userRepositoriesLiveData.value = response.data!!
                 }

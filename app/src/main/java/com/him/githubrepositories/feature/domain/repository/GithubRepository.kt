@@ -9,10 +9,10 @@ import kotlinx.coroutines.flow.Flow
 interface GithubRepository {
     fun getRepositories(): Flow<Resource<List<RepositoriesResponse>>>
     fun getRepositoryDetail(
-        userName: String,
+        username: String,
         repositoryName: String
     ): Flow<Resource<RepositoryDetailResponse>>
 
-    fun getUserDetail(userName: String): Flow<Resource<UserDetailResponse>>
-    fun getRepositoriesOfUser(userName: String): Flow<Resource<List<RepositoriesResponse>>>
+    fun getUserDetail(username: String): Flow<Resource<UserDetailResponse>>
+    fun getRepositoriesOfUser(username: String): Flow<Resource<List<RepositoriesResponse>>>
 }

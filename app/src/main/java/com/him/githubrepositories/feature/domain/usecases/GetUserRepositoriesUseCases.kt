@@ -6,7 +6,7 @@ import com.him.githubrepositories.feature.domain.repository.GithubRepository
 import kotlinx.coroutines.flow.Flow
 
 class GetUserRepositoriesUseCases(private val githubRepository: GithubRepository) {
-    operator fun invoke(userName: String): Flow<Resource<List<RepositoriesResponse>>> {
-        return githubRepository.getRepositoriesOfUser(userName)
+    operator fun invoke(username: String): Flow<Resource<List<RepositoriesResponse>>> {
+        return githubRepository.getRepositoriesOfUser(username)
     }
 }

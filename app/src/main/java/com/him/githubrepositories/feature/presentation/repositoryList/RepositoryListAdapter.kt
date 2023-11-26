@@ -28,7 +28,7 @@ class RepositoryListAdapter(
 
     override fun onBindViewHolder(holder: RepositoryListViewHolder, position: Int) {
         repositoryList[position].name?.let { holder.binding.tvRepoName.text = it }
-        repositoryList[position].owner?.userName?.let { holder.binding.tvOwnerName.text = it }
+        repositoryList[position].owner?.username?.let { holder.binding.tvOwnerName.text = it }
         repositoryList[position].owner?.avatarUrl?.let {
             holder.binding.ivAvatar.loadImage(
                 it,
@@ -39,7 +39,7 @@ class RepositoryListAdapter(
             holder.binding.cvItemRepository.setOnClickListener {
                 listener.itemClicked(
                     repositoryList[position].name ?: "",
-                    repositoryList[position].owner?.userName ?: ""
+                    repositoryList[position].owner?.username ?: ""
                 )
             }
         }

@@ -8,13 +8,13 @@ class RemoteDataSource @Inject constructor(
 ) {
     suspend fun getRepositories(): Response<List<RepositoriesResponse>> = api.getRepositories()
     suspend fun getRepositoryDetail(
-        userName: String,
+        username: String,
         repositoryName: String
-    ): Response<RepositoryDetailResponse> = api.getRepositoryDetail(userName, repositoryName)
+    ): Response<RepositoryDetailResponse> = api.getRepositoryDetail(username, repositoryName)
 
-    suspend fun getUserDetail(userName: String): Response<UserDetailResponse> =
-        api.getUserDetail(userName)
+    suspend fun getUserDetail(username: String): Response<UserDetailResponse> =
+        api.getUserDetail(username)
 
-    suspend fun getRepositoriesOfUser(userName: String): Response<List<RepositoriesResponse>> =
-        api.getRepositoriesOfUser(userName)
+    suspend fun getRepositoriesOfUser(username: String): Response<List<RepositoriesResponse>> =
+        api.getRepositoriesOfUser(username)
 }

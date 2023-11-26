@@ -7,9 +7,9 @@ import kotlinx.coroutines.flow.Flow
 
 class GetRepositoryDetailUseCases(private val githubRepository: GithubRepository) {
     operator fun invoke(
-        userName: String,
+        username: String,
         repositoryName: String
     ): Flow<Resource<RepositoryDetailResponse>> {
-        return githubRepository.getRepositoryDetail(userName, repositoryName)
+        return githubRepository.getRepositoryDetail(username, repositoryName)
     }
 }

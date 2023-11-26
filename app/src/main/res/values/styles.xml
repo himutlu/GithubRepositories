@@ -2,12 +2,12 @@
 <resources>
 
     <style name="StaticTextView">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="DynamicTextView">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:titleMarginStart">5dp</item>
         <item name="android:ellipsize">end</item>
         <item name="maxLines">1</item>

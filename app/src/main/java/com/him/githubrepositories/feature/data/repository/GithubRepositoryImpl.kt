@@ -25,11 +25,11 @@ class GithubRepositoryImpl(private val dataSource: RemoteDataSource) : GithubRep
     }
 
     override fun getRepositoryDetail(
-        userName: String,
+        username: String,
         repositoryName: String
     ): Flow<Resource<RepositoryDetailResponse>> = flow {
         emit(Resource.loading())
-        val response = dataSource.getRepositoryDetail(userName, repositoryName)
+        val response = dataSource.getRepositoryDetail(username, repositoryName)
         if (response.isSuccessful) {
             response.body()?.let { repositoryDetailResponse ->
                 emit(Resource.success(repositoryDetailResponse))
@@ -39,9 +39,9 @@ class GithubRepositoryImpl(private val dataSource: RemoteDataSource) : GithubRep
         }
     }
 
-    override fun getUserDetail(userName: String): Flow<Resource<UserDetailResponse>> = flow {
+    override fun getUserDetail(username: String): Flow<Resource<UserDetailResponse>> = flow {
         emit(Resource.loading())
-        val response = dataSource.getUserDetail(userName)
+        val response = dataSource.getUserDetail(username)
         if (response.isSuccessful) {
             response.body()?.let { userDetailResponse ->
                 emit(Resource.success(userDetailResponse))
@@ -51,10 +51,10 @@ class GithubRepositoryImpl(private val dataSource: RemoteDataSource) : GithubRep
         }
     }
 
-    override fun getRepositoriesOfUser(userName: String): Flow<Resource<List<RepositoriesResponse>>> =
+    override fun getRepositoriesOfUser(username: String): Flow<Resource<List<RepositoriesResponse>>> =
         flow {
             emit(Resource.loading())
-            val response = dataSource.getRepositoriesOfUser(userName)
+            val response = dataSource.getRepositoriesOfUser(username)
             if (response.isSuccessful) {
                 response.body()?.let { repositoriesResponse ->
                     emit(Resource.success(repositoriesResponse))

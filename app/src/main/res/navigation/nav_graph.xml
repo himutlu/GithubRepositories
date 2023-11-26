@@ -22,7 +22,7 @@
             android:id="@+id/action_repositoryDetailFragment_to_userDetailFragment"
             app:destination="@id/userDetailFragment" />
         <argument
-            android:name="userName"
+            android:name="username"
             app:argType="string" />
         <argument
             android:name="repositoryName"
@@ -34,7 +34,7 @@
         android:label="fragment_user_detail"
         tools:layout="@layout/fragment_user_detail">
         <argument
-            android:name="userName"
+            android:name="username"
             app:argType="string" />
     </fragment>
 </navigation>

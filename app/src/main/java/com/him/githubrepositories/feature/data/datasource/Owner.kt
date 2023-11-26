@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Owner(
     @SerializedName("login")
-    var userName: String? = null,
+    var username: String? = null,
     @SerializedName("avatar_url")
     var avatarUrl: String? = null
 )

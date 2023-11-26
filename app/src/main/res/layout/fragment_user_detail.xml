@@ -13,6 +13,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginVertical="10dp"
         android:layout_weight="2"
+        android:paddingHorizontal="5dp"
         android:orientation="vertical">
 
         <ImageView
@@ -54,7 +55,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_owner_user_name"
+                android:id="@+id/ll_owner_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -63,10 +64,10 @@
                     style="@style/StaticTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/user_name" />
+                    android:text="@string/username" />
 
                 <TextView
-                    android:id="@+id/tv_owner_user_name"
+                    android:id="@+id/tv_owner_username"
                     style="@style/DynamicTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,6 +86,14 @@
         android:layout_marginBottom="60dp"
         android:layout_weight="5"
         android:orientation="vertical">
+
+        <TextView
+            style="@style/StaticTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/repositories"
+            android:layout_marginBottom="10dp"/>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_user_repositories"
