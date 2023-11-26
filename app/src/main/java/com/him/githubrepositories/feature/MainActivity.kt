@@ -29,10 +29,10 @@ class MainActivity : AppCompatActivity() {
             .setMessage(message)
             .setCancelable(false)
             .setPositiveButton(
-                "Retry"
+                getString(R.string.retry)
             ) { _, _ ->
                 positiveButtonHandler.invoke()
-            }.setNegativeButton("Go Back") { _, _ ->
+            }.setNegativeButton(getString(R.string.go_back)) { _, _ ->
                 negativeButtonHandler?.invoke()
             }
             .setIcon(android.R.drawable.ic_dialog_alert)

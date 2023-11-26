@@ -14,4 +14,6 @@
     <string name="repository_detail">Repository Detail</string>
     <string name="user_detail">User Detail</string>
     <string name="error">Error</string>
+    <string name="go_back">Go Back</string>
+    <string name="retry">Retry</string>
 </resources>
