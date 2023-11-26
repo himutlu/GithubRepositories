@@ -3,8 +3,8 @@ package com.him.githubrepositories.feature
 import android.app.AlertDialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import com.him.githubrepositories.R
+import com.him.githubrepositories.core.util.blind
 import com.him.githubrepositories.core.util.hide
 import com.him.githubrepositories.core.util.show
 import com.him.githubrepositories.databinding.ActivityMainBinding
@@ -40,23 +40,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showProgressbarAndHideContainer() {
-        if (!binding.progressBar.isVisible)
-            binding.progressBar.show()
-        hideFragmentContainer()
+        binding.progressBar.show()
+        blindFragmentContainer()
     }
 
     fun hideProgressbar() {
-        if (binding.progressBar.isVisible)
-            binding.progressBar.hide()
+        binding.progressBar.hide()
     }
 
-    fun hideFragmentContainer() {
-        if (binding.fragmentContainerView.isVisible)
-            binding.fragmentContainerView.hide()
+    fun blindFragmentContainer() {
+        binding.fragmentContainerView.blind()
     }
 
     fun showFragmentContainer() {
-        if (!binding.fragmentContainerView.isVisible)
-            binding.fragmentContainerView.show()
+        binding.fragmentContainerView.show()
     }
 }

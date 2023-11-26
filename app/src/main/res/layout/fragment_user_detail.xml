@@ -4,23 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="7"
     tools:context=".feature.presentation.userDetail.UserDetailFragment">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginVertical="10dp"
-        android:layout_weight="2"
-        android:paddingHorizontal="5dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="5dp">
 
         <ImageView
             android:id="@+id/iv_user_avatar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
+            android:scaleType="fitCenter"
             tools:src="@tools:sample/avatars" />
 
         <LinearLayout
@@ -80,17 +79,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="60dp"
-        android:layout_weight="5"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:orientation="vertical">
 
         <TextView
             style="@style/StaticTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/repositories"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:text="@string/repositories" />
 
 
         <androidx.recyclerview.widget.RecyclerView
