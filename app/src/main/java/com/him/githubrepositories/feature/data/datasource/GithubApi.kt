@@ -9,7 +9,7 @@ interface GithubApi {
     @GET("repositories")
     suspend fun getRepositories(): Response<List<RepositoriesResponse>>
 
-    @GET("/repos/{user_name}/{repository_name}/")
+    @GET("/repos/{user_name}/{repository_name}")
     suspend fun getRepositoryDetail(
         @Path("user_name") userName: String,
         @Path("repository_name") repositoryName: String

@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.him.githubrepositories.databinding.FragmentUserDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UserDetailFragment : Fragment() {
     private val viewModel: UserDetailViewModel by viewModels()
     private var _binding: FragmentUserDetailBinding? = null

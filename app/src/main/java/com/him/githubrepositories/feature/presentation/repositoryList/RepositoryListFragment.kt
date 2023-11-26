@@ -29,10 +29,14 @@ class RepositoryListFragment : Fragment(), RepositoryListAdapter.OnClickListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvRepositories.layoutManager = LinearLayoutManager(activity)
-        binding.rvRepositories.adapter = adapter
+        initRecyclerView()
         initObservers()
         viewModel.getRepositories()
+    }
+
+    private fun initRecyclerView() {
+        binding.rvRepositories.layoutManager = LinearLayoutManager(activity)
+        binding.rvRepositories.adapter = adapter
     }
 
     private fun initObservers() {

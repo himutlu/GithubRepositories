@@ -1,6 +1,7 @@
 package com.him.githubrepositories.core.util
 
 import android.content.Context
+import android.view.View
 import android.widget.ImageView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
@@ -25,4 +26,8 @@ private fun createPlaceHolder(context: Context): CircularProgressDrawable {
         centerRadius = 40f
         start()
     }
+}
+
+fun View.hide() {
+    this.visibility = View.GONE
 }
