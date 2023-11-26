@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.him.githubrepositories.core.util.hide
 import com.him.githubrepositories.core.util.loadImage
@@ -24,14 +25,24 @@ class RepositoryDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRepositoryDetailBinding.inflate(layoutInflater)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
+        initViews()
         viewModel.getRepositoryDetail(safeArgs.userName, safeArgs.repositoryName)
+    }
+
+    private fun initViews() {
+        binding.ivDetailAvatar.setOnClickListener {
+            val action =
+                RepositoryDetailFragmentDirections.actionRepositoryDetailFragmentToUserDetailFragment(
+                    safeArgs.userName
+                )
+            findNavController().navigate(action)
+        }
     }
 
     private fun initObservers() {

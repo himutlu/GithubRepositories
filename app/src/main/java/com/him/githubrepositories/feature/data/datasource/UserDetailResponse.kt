@@ -1,7 +1,11 @@
 package com.him.githubrepositories.feature.data.datasource
 
-class UserDetailResponse(
+import com.google.gson.annotations.SerializedName
+
+data class UserDetailResponse(
     val email: String?,
+    @SerializedName("login")
     val userName: String?,
-    val avatar: String?
+    @SerializedName("avatar_url")
+    val avatarLink: String?
 )
